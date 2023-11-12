@@ -20,8 +20,8 @@ Query all employee records from the employee table
 And query employee with condition, emp_num > 101
 '''
 
-# cursor.execute("SELECT * FROM employee")
-# employees = cursor.fetchall()
+cursor.execute("SELECT * FROM employee")
+employees = cursor.fetchall()
 
 # for employee in employees:
 #     print(employee[0], employee[1], employee[2], employee[3], employee[4].strftime('%d-%B-%Y'))
@@ -57,8 +57,16 @@ Join employee with job and select emp_num, emp_lname, emp_fname, emp_initial, em
 '''
 Insert new employee record, emp_num = 999, emp_lname = Doe, emp_fname = John, emp_initial = D, emp_hiredate = current date
 '''
+today = datetime.now()
 
+sql = "INSERT INTO employee(emp_num, emp_lname, emp_fname, emp_initial, emp_hiredate) VALUES (%s, %s, %s, %s, %s)"
+value = (999, "Doe", "John", "D", today)
 
+cursor.execute(sql, value)
+
+DB.commit()
+
+print(cursor.rowcount, "record inserted.")
 
 '''
 Update employee record, job_code = 510 where emp_num = 999
@@ -75,4 +83,3 @@ Delete employee record, emp_num = 999
 '''
 Query assigment where assign_date is larger than 2010-01-01
 '''
-
