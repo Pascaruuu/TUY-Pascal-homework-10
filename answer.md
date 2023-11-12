@@ -53,10 +53,10 @@ DB.commit()
 
 sql = """
 SELECT 
-    p.proj_id AS 'Project ID',
-    p.proj_name AS 'Project Name',
-    e.emp_fname AS 'Program Manager First Name',
-    e.emp_lname AS 'Program Manager Last Name'
+    p.proj_id,
+    p.proj_name,
+    e.emp_fname,
+    e.emp_lname
 FROM 
     project AS p
 JOIN 
